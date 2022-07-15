@@ -37,11 +37,6 @@ def get_csv(csvpath, docid, tabid = 0):
 
 
 def do_get_documents(location):
-    # todo convert location to actual place where config/googlw-docs.yml is found
-    # from there 
-    #    decide on outputpath
-    #    iterate all habitats and csvs
-    #        get csv per case
     if location.is_dir():
         location = location / 'config' / 'google-docs.yml'
     assert location.exists() and location.is_file(), f"config file {location} does not exist"
@@ -56,7 +51,7 @@ def do_get_documents(location):
 
     for habitat, hconf in gdocs['habitat'].items(): 
         log.info(f"  processing {habitat} = {hconf} ")
-        if 'docid' in hconf and 'tabid' in hconf:
+        if {'docid','tabid'}.issubset(hconf):  # both docid and tabid should be in the habitat-conf
             docid = hconf['docid'] 
             for label, tabid in hconf['tabid'].items():
                 if tabid is not None:
