@@ -36,6 +36,8 @@ we postpone thinking about ena-run objects
 
 
 also: check if py libs exist to interact with ena
+--> https://pypi.org/project/ena-upload-cli/
+--> https://github.com/phe-bioinformatics/ena_submission
 
 
 the docs for doing the submission are at
