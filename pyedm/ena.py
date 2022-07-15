@@ -36,4 +36,11 @@ we postpone thinking about ena-run objects
 
 
 also: check if py libs exist to interact with ena
+
+
+the docs for doing the submission are at
+https://ena-docs.readthedocs.io/en/latest/submit/general-guide/programmatic.html
+https://ena-docs.readthedocs.io/en/latest/submit/samples/programmatic.html
+
+todo -- check if there is some test-environment to try out stuff first
 ¨¨¨
