@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import argparse
 import pathlib
-import sys
 import os
 import yaml
 import logging
@@ -10,6 +9,27 @@ from uritemplate import expand
 import requests
 
 log = logging.getLogger(__name__)
+
+def get_xlsx(xlsxpath, docid):
+    try:
+        prms = dict(id=docid, format="xlsx")
+        ggut = "https://docs.google.com/spreadsheets/d/{id}/export{?format,id}"
+        url = expand(ggut, prms)
+
+        # get and save the content 
+        log.info(f"  get content for {xlsxpath} from {url}")
+        resp = requests.get(url, allow_redirects=True)
+        log.debug(f"    final url at {resp.url}")
+        log.debug(f"    final content-type is {resp.headers.get('Content-Type')}")
+        log.debug(f"    final status-code is {resp.status_code}")
+
+        # todo save content to file and allow overwrite
+        resp.raise_for_status() # ensure we notice bad responses
+        with open(xlsxpath, "wb") as xlsxf:
+            xlsxf.write(resp.content)
+    except Exception as e:
+        log.error(f"failure saving to {xlsxpath}")
+        log.exception(e)
 
 
 def get_csv(csvpath, docid, tabid = 0):
