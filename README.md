@@ -1,8 +1,8 @@
 # emobon-dm-tools
-collection of scripts and tricks that help automate collecting / formatting / checking  the data from the obervatories
+Collection of scripts and tricks that help automate collecting / formatting / checking  the data from the obervatories
 
 
-List of tools
+List of tools (in /pyedm)
 
 | code | name        | purpose                                                                                    |
 |------|-------------|--------------------------------------------------------------------------------------------|
